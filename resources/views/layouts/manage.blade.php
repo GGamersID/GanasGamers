@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/buefy/lib/buefy.min.css">
     @yield('styles')
 </head>
 <body>
@@ -22,6 +23,7 @@
         </div>
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/buefy"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

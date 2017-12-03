@@ -1,6 +1,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import CheckboxRadio from 'vue-checkbox-radio';
 import Buefy from 'buefy';
 Vue.use(Buefy);
 //
