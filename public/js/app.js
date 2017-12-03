@@ -1022,7 +1022,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(11);
-module.exports = __webpack_require__(38);
+module.exports = __webpack_require__(39);
 
 
 /***/ }),
@@ -1033,6 +1033,7 @@ module.exports = __webpack_require__(38);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_buefy__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_buefy___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_buefy__);
+__webpack_require__(38);
 __webpack_require__(12);
 
 window.Vue = __webpack_require__(35);
@@ -1040,35 +1041,39 @@ window.Vue = __webpack_require__(35);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a);
 //
 // Vue.component('slug-widget', require('./components/slugWidget.vue'));
-
 var app = new Vue({
   el: '#app',
-  data: {
-    password_options: 'keep',
-    auto_password: true,
-    permissionType: 'basic',
-    resource: '',
-    crudSelected: ['create', 'read', 'update', 'delete']
-  },
-  methods: {
-    crudName: function crudName(item) {
-      return item.substr(0, 1).toUpperCase() + item.substr(1) + " " + app.resource.substr(0, 1).toUpperCase() + app.resource.substr(1);
-    },
-    crudSlug: function crudSlug(item) {
-      return item.toLowerCase() + "-" + app.resource.toLowerCase();
-    },
-    crudDescription: function crudDescription(item) {
-      return "Allow a User to " + item.toUpperCase() + " a " + app.resource.substr(0, 1).toUpperCase() + app.resource.substr(1);
-    }
-  }
+  data: {}
 });
-
-$(document).ready(function () {
-  //  Dropdowns
-  $('.dropdown').hover(function (e) {
-    $(this).toggleClass('is-open');
-  });
-});
+// var app = new Vue({
+//  el: '#app',
+//  data: {
+//    password_options: 'keep',
+//    auto_password: true,
+//    permissionType: 'basic',
+//    resource: '',
+//    crudSelected: ['create', 'read', 'update', 'delete']
+//  },
+//  methods: {
+//    crudName: function(item) {
+//      return item.substr(0,1).toUpperCase() + item.substr(1) + " " + app.resource.substr(0,1).toUpperCase() + app.resource.substr(1);
+//    },
+//    crudSlug: function(item) {
+//      return item.toLowerCase() + "-" + app.resource.toLowerCase();
+//    },
+//    crudDescription: function(item) {
+//      return "Allow a User to " + item.toUpperCase() + " a " + app.resource.substr(0,1).toUpperCase() + app.resource.substr(1);
+//    }
+//  }
+// });
+//
+//
+// $(document).ready(function() {
+//   //  Dropdowns
+//   $('.dropdown').hover(function(e) {
+//     $(this).toggleClass('is-open')
+//   })
+// })
 
 /***/ }),
 /* 12 */
@@ -40326,6 +40331,44 @@ module.exports = Vue$3;
 
 /***/ }),
 /* 38 */
+/***/ (function(module, exports) {
+
+var accordions = document.getElementsByClassName('has-submenu');
+var adminSlideButton = document.getElementById('admin-slideout-button');
+
+function setSubmenuStyles(submenu, maxHeight, margins) {
+  submenu.style.maxHeight = maxHeight;
+  submenu.style.marginTop = margins;
+  submenu.style.marginBottom = margins;
+}
+
+adminSlideButton.onclick = function () {
+  this.classList.toggle('is-active');
+  document.getElementById('admin-side-menu').classList.toggle('is-active');
+};
+
+for (var i = 0; i < accordions.length; i++) {
+  if (accordions[i].classList.contains('is-active')) {
+    var submenu = accordions[i].nextElementSibling;
+    setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em");
+  }
+
+  accordions[i].onclick = function () {
+    this.classList.toggle('is-active');
+
+    var submenu = this.nextElementSibling;
+    if (submenu.style.maxHeight) {
+      // menu is open, we need to close it now
+      setSubmenuStyles(submenu, null, null);
+    } else {
+      // meny is close, so we need to open it
+      setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em");
+    }
+  };
+}
+
+/***/ }),
+/* 39 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -70,14 +70,13 @@
 @endsection
 
 
-{{-- @section('scripts')
+@section('scripts')
   <script>
     var app = new Vue({
       el: '#app',
       data: {
         password_options: 'keep',
-        rolesSelected: {!! $user->roles->pluck('id') !!}
       }
     });
   </script>
-@endsection --}}
+@endsection

@@ -27,8 +27,8 @@
                 </div>
                 <div class="field">
                   <p class="control">
-                    <label for="display_name" class="label">Slug(can not be edited)</label>
-                    <input type="text" class="input" value="{{$role->display_name}}" disabled id="name">
+                    <label for="name" class="label">Slug(can not be edited)</label>
+                    <input type="text" class="input" value="{{$role->name}}" disabled id="name">
                   </p>
                 </div>
                 <div class="field">
@@ -37,7 +37,7 @@
                     <input type="text" class="input" value="{{$role->description}}" id="description" name="description">
                   </p>
                 </div>
-                <input type="hidden" name="permissions" v-if="permissionsSelected">
+                <input type="hidden" :value="permissionsSelected" name="permissions">
               </div>
             </div>
           </article>
@@ -51,13 +51,12 @@
             <div class="media-content">
               <div class="content">
                 <h2 class="title">Permission :</h2>
-                <ul>
+                <b-checkbox-group v-model="permissionsSelected">
                   @foreach ($permissions as $permission)
                     <div class="field">
-                          <b-checkbox v-model="permissionsSelected" custom-value="{{$permission->id}}">{{$permission->display_name}} <em>({{$permission->description}})</em></b-checkbox>
-                    </div>
+                          <b-checkbox custom-value="{{$permission->id}}">{{$permission->display_name}} <em>({{$permission->description}})</em></b-checkbox>
                   @endforeach
-                </ul>
+
               </div>
             </div>
           </article>
@@ -65,20 +64,17 @@
         <button class="button is-primary is-pulled-right">Save Changes to Role</button>
       </div>
     </div>
-
-    </form>
-  </div>
+  </form>
+</div>
 @endsection
 
 @section('scripts')
-  @foreach ($role->permissions as $r)
   <script>
       var app = new Vue({
         el: '#app',
         data: {
-          permissionsSelected: {!!$r->pluck('id')!!}
+          permissionsSelected: ['id']
         }
       });
-  @endforeach
 </script>
 @endsection
