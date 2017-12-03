@@ -4,7 +4,6 @@ use Illuminate\Http\Request;
 use App\Role;
 use App\Permission;
 use Session;
-
 class RoleController extends Controller
 {
     /**
@@ -35,9 +34,9 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-      $this->validate($request, [
+      $this->validateWith([
         'display_name' => 'required|max:255',
-        'name' => 'required|max:100|alpha_dash|unique:permissions,name',
+        'name' => 'required|max:100|alpha_dash|unique:roles',
         'description' => 'sometimes|max:255'
       ]);
       $role = new Role();
@@ -83,7 +82,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
+      $this->validateWith([
         'display_name' => 'required|max:255',
         'description' => 'sometimes|max:255'
       ]);

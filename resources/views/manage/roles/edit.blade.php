@@ -37,7 +37,7 @@
                     <input type="text" class="input" value="{{$role->description}}" id="description" name="description">
                   </p>
                 </div>
-                <input type="hidden" name="permissions" value="permissionsSelected">
+                <input type="hidden" name="permissions" v-if="permissionsSelected">
               </div>
             </div>
           </article>
@@ -71,12 +71,14 @@
 @endsection
 
 @section('scripts')
+  @foreach ($role->permissions as $r)
   <script>
       var app = new Vue({
         el: '#app',
         data: {
-          permissionsSelected: {!!$role->permissions->pluck('id')!!}
+          permissionsSelected: {!!$r->pluck('id')!!}
         }
       });
+  @endforeach
 </script>
 @endsection

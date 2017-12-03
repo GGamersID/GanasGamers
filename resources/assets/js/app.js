@@ -13,7 +13,6 @@ var app = new Vue({
    auto_password: true,
    permissionType: 'basic',
    resource: '',
-   permissionsSelected: '',
    crudSelected: ['create', 'read', 'update', 'delete']
  },
  methods: {
