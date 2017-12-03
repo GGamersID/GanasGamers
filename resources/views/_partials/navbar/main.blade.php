@@ -27,7 +27,7 @@
       </div> <!-- end of .navbar-start -->
 
 
-      <div class="navbar-end nav-menu" style="overflow: visible">
+      <div class="navbar-end" style="overflow: visible">
         @guest
           <a href="{{route('login')}}" class="navbar-item is-tab">Login</a>
           <a href="{{route('register')}}" class="navbar-item is-tab">Join Us</a>

@@ -1043,42 +1043,32 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a);
 
 var app = new Vue({
   el: '#app',
-  data: {}
+  data: {
+    password_options: 'keep',
+    auto_password: true,
+    permissionType: 'basic',
+    resource: '',
+    crudSelected: ['create', 'read', 'update', 'delete']
+  },
+  methods: {
+    crudName: function crudName(item) {
+      return item.substr(0, 1).toUpperCase() + item.substr(1) + " " + app.resource.substr(0, 1).toUpperCase() + app.resource.substr(1);
+    },
+    crudSlug: function crudSlug(item) {
+      return item.toLowerCase() + "-" + app.resource.toLowerCase();
+    },
+    crudDescription: function crudDescription(item) {
+      return "Allow a User to " + item.toUpperCase() + " a " + app.resource.substr(0, 1).toUpperCase() + app.resource.substr(1);
+    }
+  }
 });
 
-var accordions = document.getElementsByClassName('has-submenu');
-var adminSlideButton = document.getElementById('admin-slideout-button');
-
-function setSubmenuStyles(submenu, maxHeight, margins) {
-  submenu.style.maxHeight = maxHeight;
-  submenu.style.marginTop = margins;
-  submenu.style.marginBottom = margins;
-}
-
-adminSlideButton.onclick = function () {
-  this.classList.toggle('is-active');
-  document.getElementById('admin-side-menu').classList.toggle('is-active');
-};
-
-for (var i = 0; i < accordions.length; i++) {
-  if (accordions[i].classList.contains('is-active')) {
-    var submenu = accordions[i].nextElementSibling;
-    setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em");
-  }
-
-  accordions[i].onclick = function () {
-    this.classList.toggle('is-active');
-
-    var submenu = this.nextElementSibling;
-    if (submenu.style.maxHeight) {
-      // menu is open, we need to close it now
-      setSubmenuStyles(submenu, null, null);
-    } else {
-      // meny is close, so we need to open it
-      setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em");
-    }
-  };
-}
+$(document).ready(function () {
+  //  Dropdowns
+  $('.dropdown').hover(function (e) {
+    $(this).toggleClass('is-open');
+  });
+});
 
 /***/ }),
 /* 12 */

@@ -30,7 +30,7 @@
 
           <div class="field">
             <label for="password" class="label">Password</label>
-            <b-radio-group v-model="password_options">
+            <b-radio-group v-model="password_options" name="password_options">
               <div class="field">
                 <b-radio name="password_options" value="keep">Do Not Change Password</b-radio>
               </div>
@@ -56,8 +56,8 @@
                 <b-checkbox v-model="rolesSelected" :native-value="{{$role->id}}">{{$role->display_name}}</b-checkbox>
               </div>
             @endforeach
-        </div>
-      </div> --}}
+        </div> --}}
+      </div>
       <div class="columns">
         <div class="column m-t-45">
 
@@ -70,7 +70,7 @@
 @endsection
 
 
-@section('scripts')
+{{-- @section('scripts')
   <script>
     var app = new Vue({
       el: '#app',
@@ -80,4 +80,4 @@
       }
     });
   </script>
-@endsection
+@endsection --}}

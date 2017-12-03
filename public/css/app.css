@@ -3183,8 +3183,15 @@ html {
           text-size-adjust: 100%;
 }
 
-article,
-aside,
+article{
+display: block;
+}
+aside{
+  position:absolute;
+  width: 220px;
+  height:170%;
+  background-color: hsl(171, 100%, 41%);
+}
 figure,
 footer,
 header,
@@ -9278,19 +9285,20 @@ a.dropdown-item.is-active,
 }
 
 .menu-list {
-  line-height: 1.25;
+  width: 210px;
+  line-height: 1.2;
 }
 
 .menu-list a {
-  border-radius: 2px;
-  color: #4a4a4a;
+  border: 2px;
+  color: #f2f1f1;
   display: block;
   padding: 0.5em 0.75em;
 }
 
 .menu-list a:hover {
-  background-color: whitesmoke;
-  color: #363636;
+  background-color: rgba(34, 34, 34, 0.68);
+  color: #ebf1f1;
 }
 
 .menu-list a.is-active {
@@ -9299,7 +9307,7 @@ a.dropdown-item.is-active,
 }
 
 .menu-list li ul {
-  border-left: 1px solid #dbdbdb;
+  border-left: 2px solid #dbdbdb;
   margin: 0.75em;
   padding-left: 0.75em;
 }
@@ -17448,4 +17456,3 @@ a.is-muted:hover {
 .navbar-burger {
   border: none;
 }
-
