@@ -39,7 +39,7 @@
           <div class="field">
               <label for="password_confirmation" class="label">Password Confirm</label>
               <p class="control">
-                <input type="password_confirmation" {{$errors->has('password_confirmation') ? 'is-danger' : ''}} class="input" name="password_confirmation" id="password_confirmation" required>
+                <input type="password" {{$errors->has('password_confirmation') ? 'is-danger' : ''}} class="input" name="password_confirmation" id="password_confirmation" required>
               </p>
               @if ($errors->has('password_confirmation'))
                 <p class="help is-danger">{{$errors->first('password_confirmation')}}</p>

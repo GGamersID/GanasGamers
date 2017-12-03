@@ -14,9 +14,9 @@
         <form action="{{route('permissions.store')}}" method="POST">
           {{csrf_field()}}
 
-          <div class="block">
-                <b-radio v-model="permissionType" name="permission_type" native-value="basic">Basic Permission</b-radio>
-                <b-radio v-model="permissionType" name="permission_type" native-value="crud">CRUD Permission</b-radio>
+          <div class="block" v-model="permissionType">
+                <label><input type="radio"  name="permission_type" value="basic">Basic Permission</label>
+                <label><input type="radio"  name="permission_type" value="crud">CRUD Permission</label>
           </div>
 
           <div class="field" v-if="permissionType == 'basic'">

@@ -30,7 +30,7 @@
             <label for="password" class="label">Password</label>
             <p class="control">
               <input type="text" class="input" name="password" id="password" v-if="!auto_password" placeholder="Manually give a password to this user">
-              <b-checkbox name="auto_generate" class="m-t-15" v-model="auto_password">Auto Generate Password</b-checkbox>
+              <label class="checkbox"><input type="checkbox" name="auto_generate" class="checkbox m-t-15" v-model="auto_password">Auto Generate Password</label>
             </p>
           </div>
           <button class="button is-primary is-pulled-right m-t-10" style="width: 250px;">Create New User</button>
@@ -46,7 +46,6 @@
       el: '#app',
       data: {
         auto_password: true,
-        rolesSelected: [{!! old('roles') ? old('roles') : '' !!}]
       }
     });
   </script>
