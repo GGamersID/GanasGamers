@@ -14,10 +14,10 @@
         <form action="{{route('permissions.store')}}" method="POST">
           {{csrf_field()}}
 
-          <b-checkbox v-model="permissionType" name="permission_type" native-value="basic">Basic Permission</b-checkbox>
-          <b-checkbox v-model="permissionType" name="permission_type" native-value="crud">CRUD Permission</b-checkbox>
-
-
+          <div class="block">
+                        <b-radio v-model="permissionType" name="permission_type" native-value="basic">Basic Permission</b-radio>
+                        <b-radio v-model="permissionType" name="permission_type" native-value="crud">CRUD Permission</b-radio>
+          </div>
 
           <div class="field" v-if="permissionType == 'basic'">
             <label for="display_name" class="label">Name (Display Name)</label>
@@ -91,7 +91,7 @@
   </div> <!-- end of .flex-container -->
 @endsection
 
-@section('scripts')
+{{-- @section('scripts')
   <script>
     var app = new Vue({
       el: '#app',
@@ -113,4 +113,4 @@
       }
     });
   </script>
-@endsection
+@endsection --}}

@@ -8,6 +8,7 @@
       </div>
     </div>
     <hr class="m-t-0">
+
     <form action="{{route('users.store')}}" method="POST">
       {{csrf_field()}}
       <div class="columns">
@@ -29,12 +30,13 @@
           <div class="field">
             <label for="password" class="label">Password</label>
             <p class="control">
-              <input type="text" class="input" name="password" id="password" v-if="!auto_password" placeholder="Manually give a password to this user">
-              <label class="checkbox"><input type="checkbox" name="auto_generate" class="checkbox m-t-15" v-model="auto_password">Auto Generate Password</label>
+              <input type="text" class="input" name="password" id="password" v-if="!auto_password">
+              <b-checkbox name="auto_generate" class="m-t-15" v-model="auto_password">Auto Generate Password</b-checkbox>
             </p>
           </div>
           <button class="button is-primary is-pulled-right m-t-10" style="width: 250px;">Create New User</button>
         </div> <!-- end of .column -->
+
           <hr>
     </form>
   </div> <!-- end of .flex-container -->
@@ -45,7 +47,7 @@
     var app = new Vue({
       el: '#app',
       data: {
-        auto_password: true,
+        auto_password: true
       }
     });
   </script>

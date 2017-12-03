@@ -11,6 +11,9 @@
     },
     "devDependencies": {
         "axios": "^0.17",
+        "buefy": "^0.6.1",
+        "bulma": "^0.6.1",
+        "font-awesome": "^4.7.0",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^1.0",
@@ -18,9 +21,6 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "buefy": "^0.6.1",
-        "bulma": "^0.6.1",
-        "font-awesome": "^4.7.0",
-        "vue-checkbox-radio": "^0.6.0"
+      "vue-template-compiler": "^2.5.3"
     }
 }
