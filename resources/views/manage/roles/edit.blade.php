@@ -73,7 +73,7 @@
   var app = new Vue({
     el: '#app',
     data: {
-      permissionsSelected: {!!$role->pluck('name')!!}
+      permissionsSelected: {!!$role->permissions->pluck('id')!!}
     }
   });
   </script>
