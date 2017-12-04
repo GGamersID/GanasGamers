@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Role;
 use DB;
 use Session;
-use Hash;
 use Input;
 
 class UserController extends Controller
@@ -53,7 +53,7 @@ class UserController extends Controller
         $keyspace = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
         $str = '';
         $max = mb_strlen($keyspace, '8bit') - 1;
-        for ($i = 1; $i < $length; ++$i) {
+        for ($i = 0; $i < $length; $i++) {
             $str .= $keyspace[random_int(0, $max)];
         }
         $password = $str;
@@ -115,8 +115,8 @@ class UserController extends Controller
             $keyspace = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
             $str = '';
             $max = mb_strlen($keyspace, '8bit') - 1;
-          for ($i = 1; $i < $length; ++$i) {
-            $str = $keyspace[random_int(0, $max)];
+          for ($i = 0; $i < $length; $i++) {
+              $str .= $keyspace[random_str(0, $max)];
             }
               $user->password = Hash::make($str);
             } elseif ($request->password_options == 'manual') {

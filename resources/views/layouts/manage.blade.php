@@ -16,12 +16,15 @@
 </head>
 <body>
         @include('_partials.navbar.main')
+
         @include('_partials.navbar.manage')
+
         <div class="management-area" id="app">
           @yield('content')
         </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>

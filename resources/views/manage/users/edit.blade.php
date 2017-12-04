@@ -30,7 +30,7 @@
 
           <div class="field">
             <label for="password" class="label">Password</label>
-            <b-radio-group v-model="password_options" name="password_options">
+            <b-radio-group v-model="password_options">
               <div class="field">
                 <b-radio name="password_options" value="keep">Do Not Change Password</b-radio>
               </div>
@@ -67,4 +67,14 @@
     </form>
 
   </div> <!-- end of .flex-container -->
+@endsection
+@section('scripts')
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        password_options: 'keep',
+      }
+    });
+  </script>
 @endsection

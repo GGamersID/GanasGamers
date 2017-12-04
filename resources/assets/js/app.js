@@ -1,4 +1,3 @@
-require('./manage')
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -10,7 +9,7 @@ Vue.use(Buefy);
 //   el: '#app',
 //   data: {}
 // });
-
+// 
 // var app = new Vue({
 //  el: '#app',
 //  data: {
@@ -18,7 +17,7 @@ Vue.use(Buefy);
 //    auto_password: true,
 //    permissionType: 'basic',
 //    resource: '',
-//    crudSelected: ['create', 'read', 'update', 'delete']
+//    crudSelected: ['create', 'read', 'update', 'delete'],
 //  },
 //  methods: {
 //    crudName: function(item) {

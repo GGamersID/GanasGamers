@@ -69,12 +69,12 @@
 @endsection
 
 @section('scripts')
-  <script>
-      var app = new Vue({
-        el: '#app',
-        data: {
-          permissionsSelected: ['id']
-        }
-      });
-</script>
+  <script type="text/javascript">
+  var app = new Vue({
+    el: '#app',
+    data: {
+      permissionsSelected: {!!$role->pluck('name')!!}
+    }
+  });
+  </script>
 @endsection
