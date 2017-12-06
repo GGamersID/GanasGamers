@@ -17396,7 +17396,6 @@ a.is-muted:hover {
   bottom: 0;
   width: 200px;
   background-color: white;
-  overflow-y: scroll;
   z-index: 100;
   -webkit-transition: left 0.3s ease-in-out;
   transition: left 0.3s ease-in-out;
@@ -17412,6 +17411,18 @@ a.is-muted:hover {
   #admin-side-menu {
     left: 0;
   }
+}
+
+#admin-slideout-button {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#admin-slideout-button.is-active {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
 }
 
 .management-area {
@@ -17444,5 +17455,62 @@ a.is-muted:hover {
 
 .navbar-burger {
   border: none;
+}
+
+.title.is-admin {
+  font-weight: 300;
+}
+
+.author-widget-area {
+  min-height: 75px;
+  padding: 10px;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.author-widget-area .selected-author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.author-widget-area .selected-author img {
+  border-radius: 25px;
+}
+
+.author-widget-area .selected-author img .author {
+  margin: auto 0 auto 0;
+}
+
+.author-widget-area .selected-author img .subtitle-1 {
+  font-weight: 300;
+  font-size: 0.6em;
+}
+
+.author-widget-area .selected-author h4 {
+  margin-left: 10px;
+}
+
+.author-widget-area .publish-button-widget {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.author-widget-area .publish-button-widget .primary-button-action,
+.author-widget-area .publish-button-widget .secondary-button-action {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  margin: 10px;
 }
 

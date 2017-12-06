@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\User;
-use App\Role;
 use DB;
 use Session;
-use Input;
+use Hash;
 
 class UserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +40,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-      $this->validateWith([
+      $this->validate($request, [
         'name' => 'required|max:255',
         'email' => 'required|email|unique:users'
       ]);
@@ -53,18 +52,19 @@ class UserController extends Controller
         $keyspace = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
         $str = '';
         $max = mb_strlen($keyspace, '8bit') - 1;
-        for ($i = 0; $i < $length; $i++) {
+        for ($i = 0; $i < $length; ++$i) {
             $str .= $keyspace[random_int(0, $max)];
         }
         $password = $str;
       }
+
       $user = new User();
       $user->name = $request->name;
       $user->email = $request->email;
-      $user->password = Hash::make($password);
+      $user->password = Hash::make('password');
       if ($user->save()) {
         return redirect()->route('users.show', $user->id);
-      } else {
+      }else {
         Session::flash('danger', 'Sorry a problem occured while creating this user');
         return redirect()->route('users.create');
       }
@@ -103,7 +103,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validateWith([
+      $this->validate($request, [
         'name' => 'required|max:255',
         'email' => 'required|email|unique:users,email,'.$id
         ]);
@@ -112,22 +112,24 @@ class UserController extends Controller
         $user->email = $request->email;
         if ($request->password_options == 'auto') {
             $length = 10;
-            $keyspace = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
+            $keyspace = '123456789abcdefghijklmnopqrstuvwxyz';
             $str = '';
             $max = mb_strlen($keyspace, '8bit') - 1;
-          for ($i = 0; $i < $length; $i++) {
-              $str .= $keyspace[random_str(0, $max)];
+            for ($i = 0; $i < $length; $i++) {
+                $str .= $keyspace[random_str(0, $max)];
             }
-              $user->password = Hash::make($str);
-            } elseif ($request->password_options == 'manual') {
-              $user->password = Hash::make($request->password);
-            }
+            $user->password = Hash::make($str);
+          }elseif ($request->password_options == 'manual') {
+            $user->password = Hash::make($request->password);
+          }
+
           if ($user->save()) {
             return redirect()->route('users.show', $id);
-          } else {
-            Session::flash('error', 'There was a problem saving the updated user info to the database. Try Again');
-            return redirect()->route('users.show', $id);
+          }else {
+            Session::flash('error', 'There was a problem saving the update, Try again');
+            return redirect()->route('users.edit', $id);
           }
+
 
         // $user->syncRoles(explode(',', $request->roles));
         // return redirect()->route('users.show', $id);

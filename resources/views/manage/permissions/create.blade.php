@@ -90,8 +90,7 @@
 
   </div> <!-- end of .flex-container -->
 @endsection
-
-{{-- @section('scripts')
+@section('scripts')
   <script>
     var app = new Vue({
       el: '#app',
@@ -113,4 +112,4 @@
       }
     });
   </script>
-@endsection --}}
+@endsection

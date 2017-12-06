@@ -27,11 +27,8 @@
             @if ($errors->has('password'))
               <p class="help is-danger">{{$errors->first('password')}}</p>
             @endif
-
           </div>
-
           <b-checkbox name="remember" class="m-t-20">Remember Me</b-checkbox>
-
           <button class="button is-success is-outlined is-fullwidth m-t-30">Log In</button>
         </form>
       </div> <!-- end of .card-content -->
@@ -39,5 +36,13 @@
     <h5 class="has-text-centered m-t-20"><a href="{{route('password.request')}}" class="is-muted">Forgot Your Password?</a></h5>
   </div>
 </div>
+@endsection
 
+@section('scripts')
+  <script>
+   var app = new Vue({
+     el: '#app',
+     data: {}
+   });
+   </script>
 @endsection

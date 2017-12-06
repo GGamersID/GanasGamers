@@ -37,7 +37,7 @@
                     <input type="text" class="input" value="{{$role->description}}" id="description" name="description">
                   </p>
                 </div>
-                <input type="hidden" :value="permissionsSelected" name="permissions">
+                <input type="hidden" custom-value="permissionsSelected" name="permissions">
               </div>
             </div>
           </article>
